@@ -49,11 +49,85 @@ where $W(1) = 1$.
 - [ ] 4. (2 point) Now, derive the asymptotic behavior of $W(n)$ using $f(n) = 1$, $f(n) = \log n$ and $f(n) = n$. Then, generate actual values for $W(n)$ for your code and confirm that the trends match your derivations.
 
 **TODO: your answer goes here**
+f(n) = 1
+It is leaf dominated because:
+root = 1
+level1 - 2*1
+So, w(n) is o(n)
+
+f(n) = n
+It is balanced:
+root = n
+level 1 = (n/2) + (n/2) = n
+w(n) is O(nlgn)
 
 - [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about $c > \log_b a$? And if they are equal? Modify `compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer. 
 
 **TODO: your answer goes here**
+c < logb(a)
+It will be leaf dominated
+Therefore, there will be n number of leaves multiplied by the constant work of each leaf
+
+w(n) = 2w(n/2) + n^log2(1)
+w(n) = 2w(n/2) + 1
+c(root) = 1
+c(level 1) = 2 * 1
+
+c > logb(a)
+It will be root dominated 
+w(n) = 2w(n/2) + n^log2(4)
+w(n) = 2w(n/2) + n^2
+c(root) = n^2
+c(level1) = (n/2)^2 + (n/2)^2 = n^2/2
+
+w(n) = 0(n^2)
+
+c = logb(a)
+It will be balanced
+w(n) = O(nlogn)
+
+w(n) = 2w(n/2) + n^log2(2)
+w(n) = 2w(n/2) + n
+c(root) = n
+c(level 1) = (n/2) + (n/2) = n
+
+|     n |       W_1 |        W_2 |
+|-------|-----------|------------|
+|    10 |       126 |        328 |
+|    20 |       524 |       1712 |
+|    50 |      2518 |      12936 |
+|   100 |     10172 |      61744 |
+|  1000 |    697496 |    8544512 |
+|  5000 |  34237688 |  294904064 |
+| 10000 | 136960752 | 1279616256 |
 
 - [ ] 6. (3 points) $W(n)$ is meant to represent the running time of some recursive algorithm. Suppose we always had $a$ processors available to us and we wanted to compute the span of the same algorithm. Implement the function `span_calc` to compute the empirical span, where the work of the algorithm is given by $W(n)$. Implement `test_compare_span` to create a new comparison function for comparing span functions. Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. Confirm that everything matches up as it should. 
 
 **TODO: your answer goes here**
+
+ROOT DOMINATED
+f(n) = logn
+c(root) = logn
+c(level 1) = 2f(√n) + 1
+
+ROOT DOMINATED
+f(n) = n
+c(root) = n
+c(level 1) = n/2
+
+BALANCED
+f(n) = 1
+C(root) = 1
+C(level 1) = 1
+
+Test Compare Span
+
+|     n |      W_1 |       W_2 |
+|-------|----------|-----------|
+|    10 |       39 |       157 |
+|    20 |      146 |       728 |
+|    50 |      667 |      5109 |
+|   100 |     2618 |     22936 |
+|  1000 |   175124 |   2886128 |
+|  5000 |  8563172 |  92476016 |
+| 10000 | 34247688 | 394904064 |

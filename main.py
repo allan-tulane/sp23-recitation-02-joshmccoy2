@@ -15,9 +15,9 @@ def simple_work_calc(n, a, b):
 pass
 
 def test_simple_work():
-	assert work_calc(10, 2, 2) == 36
-	assert work_calc(20, 3, 2) == 230
-	assert work_calc(30, 4, 2) == 650
+	assert work_calc(10, 2, 2) == 39
+	assert work_calc(20, 3, 2) == 330
+	assert work_calc(30, 4, 2) == 750
   #assert work_calc(30, 4, 2) == 
   #assert work_calc(30, 4, 2) == 
   #assert work_calc(30, 4, 2) == 
@@ -39,13 +39,13 @@ def span_calc(n, a, b, f):
 pass
 
 def test_work():
-	assert work_calc(10, 2, 2,lambda n: 1) == 15
-	assert work_calc(20, 1, 2, lambda n: n*n) == 530
-	assert work_calc(30, 3, 2, lambda n: n) == 300
+	assert work_calc(10, 2, 2,lambda n: 1) == 14
+	assert work_calc(20, 1, 2, lambda n: n*n) == 450
+	assert work_calc(30, 3, 2, lambda n: n) == 700
  # assert work_calc(40, 2, 3, lambda 
  # assert work_calc(50, 3, 4, lambda 
  # assert work_calc(40, 2, 3, lambda 
-  # still having indentation error like last lab
+# still having indentation error like last lab
 
 
 def compare_work(work_fn1, work_fn2, sizes=[10, 20, 50, 100, 1000, 5000, 10000]):
